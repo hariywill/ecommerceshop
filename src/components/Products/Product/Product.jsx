@@ -5,12 +5,9 @@ import { AddShoppingCart } from '@material-ui/icons'
 import useStyles from './styles.js'
 
 
-const Product = ({ product: { name, description, price, media } }) => {
+const Product = ({ product: { id, name, description, price, media }, onAddToCart }) => {
     const classes = useStyles()
 
-    const handleAddToCart = () => {
-        console.log("Added")
-    }
     return (
         <Card className={classes.root}>
             <CardMedia className={classes.media} image={media.source} title={name} />
@@ -26,7 +23,7 @@ const Product = ({ product: { name, description, price, media } }) => {
                  <Typography dangerouslySetInnerHTML={{ __html: description }} variant="body2" color="textSecondary" component="p" />
             </CardContent>
             <CardActions className={classes.cardActions} disableSpacing>
-                <IconButton aria-label="Add to Cart" onClick={handleAddToCart}>
+                <IconButton aria-label="Add to Cart" onClick={() => onAddToCart(id, 1)}>
                     <AddShoppingCart />
                 </IconButton>
             </CardActions>

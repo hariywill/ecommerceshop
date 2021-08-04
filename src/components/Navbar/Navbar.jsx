@@ -6,7 +6,7 @@ import { Link, useLocation } from 'react-router-dom'
 import logo from '../../assets/commerce.png'
 import useStyles from './styles.js'
 
-const Navbar = () => {
+const Navbar = ({ totalItems }) => {
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null)
     const classes = useStyles()
     const location = useLocation()
@@ -40,7 +40,7 @@ const Navbar = () => {
                     {location.pathname === '/' && (
                         <div className={classes.button}>
                             <IconButton component={Link} to="/cart" aria-label="Show cart items" color="inherit">
-                                <Badge badgeContent={3} color="secondary">
+                                <Badge badgeContent={totalItems} color="secondary">
                                     <ShoppingCart />
                                 </Badge>
                             </IconButton>
